@@ -1,6 +1,7 @@
 import sqlite3
 import os
 import sys
+import re
 
 from logger import logger
 
@@ -231,6 +232,7 @@ class MetaDb():
         This private __create_query() callable modifies the dictionary into two 
         separate strings of keys and values to be converted into tuple that
         satisfies all the requirements to be passed into the database query.
+        
         Parameters
         -----------
         new_record = dictionary containg the information of data to be accessed
@@ -255,3 +257,32 @@ class MetaDb():
         val = list(map(str, list(values)))
         val = ", ".join(val)
         return data, val
+
+def extract_dob(file: str):
+    '''
+    extract required data from birth certificate using regular expression
+
+    Parameter:
+    ------------
+    file - certificate file
+
+    Return:
+    ------------
+    search - list of matching data. 
+    '''
+    re_dob = r"([0123]{1}[0-9]{1}[/.-]{1}[01]{1}[0-9]{1}[/.-]{1}[0-9]{4})"
+    with open(file) as f:
+        rows = f.read()
+        try:
+            search = re.findall(re_dob, rows)
+        except Exception as err:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            logging.error(
+                f"{exc_type} : {fname} line {exc_tb.tb_lineno} - {exc_obj}"
+                )
+        if not search:
+            logging.info("No matching string found.")
+            return None
+        logging.info("Successfully found required data")
+        return search
