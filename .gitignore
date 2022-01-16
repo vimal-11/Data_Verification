@@ -1,0 +1,6 @@
+*.sqbpro
+*.vscode
+*.log
+*.ipynb
+*/__pycache__
+*.pyc
