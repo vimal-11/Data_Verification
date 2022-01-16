@@ -26,4 +26,4 @@ Automating the human data verification process by processing the documents and f
         
 #### Example  
   
-      python manage.py example 01-01-2022 meta/test_db.txt
+      python main.py example 01-01-2022 meta/test_db.txt
