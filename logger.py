@@ -14,7 +14,7 @@ class logger():
             level=logging.INFO,
             format="[%(asctime)s] [%(levelname)s] -> %(message)s",
             handlers=[
-                logging.FileHandler("debug.log"),
+                logging.FileHandler("meta/debug.log"),
                 logging.StreamHandler(sys.stdout)
             ]
         )

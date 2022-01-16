@@ -2,7 +2,7 @@ import sqlite3
 import os
 import sys
 
-from .logger import logger
+from logger import logger
 
 logging = logger.get_logger()
 
@@ -89,7 +89,7 @@ class MetaDb():
         Return
         ----------
         No return  
-        
+
         Executes sqlite query for writing new connection data, commits the 
         database and logs a success message after successfull execution.
         """
