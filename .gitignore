@@ -2,6 +2,7 @@
 *.vscode
 *.log
 *.ipynb
+*.jpg
 */__pycache__
 *.pyc
 meta/test_db.txt

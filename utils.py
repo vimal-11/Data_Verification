@@ -286,3 +286,21 @@ def extract_dob(file: str):
             return None
         logging.info("Successfully found required data")
         return search
+
+def find_accuracy(inp_data, ext_data):
+    accuracy = 0
+    fact = 100/len(ext_data)
+    mapping = zip(ext_data, inp_data)
+    for i,j in mapping:
+        if i == j:
+            accuracy = accuracy + fact
+        elif i.lower() == j.lower():
+            accuracy = accuracy + fact / 2
+        else:
+            accuracy = accuracy
+    if len(ext_data) == len(inp_data):
+        pass
+    elif len(ext_data) <= len(inp_data):
+        diff = len(inp_data) - len(ext_data)
+        accuracy = accuracy - diff * fact
+    return accuracy

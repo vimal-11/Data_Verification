@@ -1,5 +1,6 @@
 import sys
-from utils import MetaDb, extract_dob
+import time
+from utils import MetaDb, extract_dob, find_accuracy
 from logger import logger
 
 logging = logger.get_logger()
@@ -13,6 +14,7 @@ if __name__ == "__main__":
     sys.argv[3] = birth certificate
     
     '''
+    start_time = time.time()
     name = sys.argv[1]
     date_of_birth = sys.argv[2]
     dob_cert = sys.argv[3]
@@ -30,11 +32,17 @@ if __name__ == "__main__":
     #print(dob_extract, form_data['date_of_birth'])
     try:
         if dob_extract[0] == form_data['date_of_birth']:
+            accuracy = find_accuracy(form_data['date_of_birth'], dob_extract[0])
+            logging.info(f"Accuracy = {accuracy}%")
             logging.info("Date of Birth is Verified.")
         else:
+            accuracy = find_accuracy(form_data['date_of_birth'], dob_extract[0])
+            logging.info(f"Accuracy = {accuracy}%")
             logging.info("Date of birth is not valid.")
     except TypeError as err:
         logging.info("Cannot find valid data in the certificate.")
+    end_time = time.time()
+    logging.info(f"Runtime of the program is {end_time - start_time}sec.")
         
 
     
