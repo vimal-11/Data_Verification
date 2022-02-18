@@ -15,9 +15,12 @@ if __name__ == "__main__":
     
     '''
     start_time = time.time()
-    name = sys.argv[1]
-    date_of_birth = sys.argv[2]
-    dob_cert = sys.argv[3]
+    name = input("Enter name: ")
+    date_of_birth = input("Enter date of birth: ")
+    dob_cert = input("Dob certificate: ")
+    # name = sys.argv[1]
+    # date_of_birth = sys.argv[2]
+    # dob_cert = sys.argv[3]
     write_dict = {}
     write_dict['name'] = name
     write_dict['date_of_birth'] = date_of_birth
@@ -42,7 +45,7 @@ if __name__ == "__main__":
     except TypeError as err:
         logging.info("Cannot find valid data in the certificate.")
     end_time = time.time()
-    logging.info(f"Runtime of the program is {end_time - start_time}sec.")
+    logging.info(f"Runtime of the program is {end_time - start_time}msec.")
         
 
     
