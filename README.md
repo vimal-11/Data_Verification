@@ -1,5 +1,5 @@
-# Data Verification Robotic Process Automation
-Validation of user data from registration forms by Robotic Process Automation in python  
+# Data Verification 
+Validation of user data from registration forms by RPA in python  
   
 Automating the human data verification process by processing the documents and files submitted by the user to verify user's credentials in the registration form.
   
